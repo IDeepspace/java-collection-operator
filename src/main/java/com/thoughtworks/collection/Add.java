@@ -6,41 +6,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import java.util.stream.*;
+
 public class Add {
     public int getSumOfEvens(int leftBorder, int rightBorder) {
-        int sum = 0;
-        if (leftBorder < rightBorder) {
-            for (int i = leftBorder; i <= rightBorder; i++) {
-                if (i % 2 == 0) {
-                    sum += i;
-                }
-            }
-        } else {
-            for (int i = leftBorder; i >= rightBorder; i--) {
-                if (i % 2 == 0) {
-                    sum += i;
-                }
-            }
-        }
-        return sum;
+        int max = Math.max(leftBorder, rightBorder);
+        int min = Math.min(leftBorder, rightBorder);
+
+        return IntStream.rangeClosed(min, max).filter(n -> n % 2 == 0).sum();
     }
 
     public int getSumOfOdds(int leftBorder, int rightBorder) {
-        int sum = 0;
-        if (leftBorder < rightBorder) {
-            for (int i = leftBorder; i <= rightBorder; i++) {
-                if (i % 2 != 0) {
-                    sum += i;
-                }
-            }
-        } else {
-            for (int i = leftBorder; i >= rightBorder; i--) {
-                if (i % 2 != 0) {
-                    sum += i;
-                }
-            }
-        }
-        return sum;
+        int max = Math.max(leftBorder, rightBorder);
+        int min = Math.min(leftBorder, rightBorder);
+
+        return IntStream.rangeClosed(min, max).filter(n -> n % 2 != 0).sum();
     }
 
     public int getSumTripleAndAddTwo(List<Integer> arrayList) {
